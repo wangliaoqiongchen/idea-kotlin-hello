@@ -1,0 +1,269 @@
+/**
+fun main() {
+    var a = 8
+    var c = a shr 1
+    println(c)
+    /**
+     *  1000
+     *  0100 4
+     */
+}
+
+1. 一元运算符：例如 ++、--、+、一、！、~
+数字类型的运算
+2. 乘法和除法运算符：*、1、%
+布尔类型介绍
+3. 加法和减法运算符：+、
+字符类型介绍
+4.位移运算符：shl、shr、ushr
+字符串类型介绍
+5.按位与运算符：and
+流程控制
+6.按位或运算符：or
+选择结构(if-else)
+7. 按位异或运算符：xor
+选择结构（when）
+8. 逻辑运算符：&&、
+循环结构（for）
+9. 比较运算符：>、>=、L、<=、==、!=
+循环结构(while)
+10.区间运算符:
+11.赋值运算符：=、十=、-=、*=、/=、%=
+------------------------------------------------------------------------
+*/
+/**
+ * boolean 判断 返回 true 或 false
+ * !表示反的
+  fun main() {
+ *     var x = 20
+ *     var y = 30
+ *     var a : Boolean = x !in 10..50
+ *     println(a)
+ * }
+ * in 表示是否在里面
+ *-----------------------------------------------------------------------
+ *
+ * fun main() {
+ *     var x = 30
+ *     var y = 90
+ *     println((x >20 && y >50) || (x >50 && y <50))
+ * }
+ *
+ * &&两个满足true ||一个满足就true
+ * 否则 false
+ *
+ *-----------------------------------------------------------------------
+ *
+ * fun main() {
+ *     val c : Char = '\'
+ *     println(c)
+ * }
+ *
+ * \t 选项卡
+ * \b 退格
+ * \n 换行
+ * \r 回车
+ * \' 单引号
+ * \" 双引号
+ * \\ 反斜杠
+ * \$ 美元符号
+ *
+ * --------------------------------------------------------------------------
+fun main() {
+    val b = 21
+    val a = "$b 人同时在线"
+    println(a)
+}
+$谁 谁必须在前面
+用$可以让b在a前面表示
+
+------------------------------------------------------------------------------
+
+fun main() {
+    var a = 10
+    if(a >= 10) {
+        println("hello world")
+    } else {
+    println("000")
+    }
+}
+加else即可错误时打印另一个如000
+------------------------------------------------------------------------------
+
+fun main() {
+    var score = 99
+    if (score >=90)
+        println("优秀")
+    else if (score >= 70) //当上一级if判断失败时，会继续判断这一级
+        println("良好")
+    else if (score >= 60)
+        println("及格")
+    else            //没有if后为最后一次，进入else造句中
+        println("不及格")
+}
+
+示例
+fun main() {
+    val score = 100
+    val str = if (score > 60) "yes" else "no"
+    println(str)
+}
+
+------------------------------------------------------------------------
+when的用法
+
+fun main() {
+    val c = 'B'
+    when (c){
+        'A' -> println("尖子")
+        'B' -> println("平行")
+        'C' -> println("深造")
+    }
+}
+两种方法
+
+fun main() {
+    val c = 'B'
+    val value = when (c){
+        'A' -> 1
+        'B' -> 2
+        'C' -> 3
+        else -> 0
+    }
+    println(value)
+}
+
+fun main() {
+   var score = 99
+    val grade = when(score) {
+        in 90..100 -> "优秀"
+        in 80..89 -> "良好"
+        in 70..79 -> "及格"
+        in 60..69 -> "神"
+        else -> "不及格"
+    }
+    println(grade)
+}
+--------------------------------------------------------------------------
+for循环
+fun main() {
+    val range = 1..5
+    for (i in range) println("hello world $i")
+}
+stop用法可以跳i
+fun main() {
+    for (i in 1..10 step 2 ) println("hello world $i")
+}
+downTo用法，倒数 后还可加stop跳数
+fun main() {
+    for (i in 10 downTo 1 step 2) {
+        println("hello world $i")
+    }
+}
+for里套for
+会先执行一次外1+内123完再外2+内123完外3+内123结束
+fun main() {
+    for (i in 1..3)
+        for (j in 1..3)
+            print("外层$i,内层$j \n")
+
+}
+continue可以跳过这个if里的东西
+fun main() {
+    for (i in 1..10){
+        if(i == 5)continue
+        println("当前$i")
+    }
+}
+break可以跳过后面所有，直接结束for循环
+fun main() {
+    for (i in 1..10){
+        if(i == 5)break
+        println("当前$i")
+    }
+}
+continue只会就近for来执行
+fun main() {
+    for (i in 1..3){
+        for (j in 1..3){
+            if (i == j)continue
+            println("$i $j")
+        }
+    }
+}
+如果想要外部也continue需要加xxx@和@xxx  如下
+fun main() {
+    xxx@ for (i in 1..3){
+         for (j in 1..3){
+            if (i == j)continue@xxx
+            println("$i $j")
+        }
+    }
+}
+----------------------------------------------------------------------------
+while循环，可以写死循环
+fun main() {
+    var i = 100
+    do{
+        println(i)
+    }while (false)
+}
+————————————————————————————————————————————————————————————————————————————————————
+函数调用
+fun main() {
+    val c = test(10,10)
+    println(c)
+}
+fun test(a: Int, b: Int): Int {
+    if (a + b > 10) return 10
+    println("hhhhhh")
+    return a + b
+}
+执行return就会直接返回结果，后面不执行
+例子
+fun main() {
+    println(test(b = 20))
+}
+fun test(a: Int = 6 , b: Int = 10): Int {
+    return a + b
+}
+更简洁的写法
+fun main() {
+    println(sum(a=1,b=3))
+}
+fun sum(a: Int, b: Int): Int = a + b
+函数的重载
+fun main() {
+    println(sum(a=1))
+}
+fun sum(a: Int): Int {
+    return a
+}
+fun sum(a: Int, b: Int): Int {
+    return a+b
+}
+--------------------------------------------------------------------------------0
+再谈函数
+在fun上面设置函数属于最高权限，可被多个fun调用
+            get和set运用
+var a = 5
+    set(value) {
+        println("qqq")
+        field = value * 10
+    }
+fun main() {
+    a = 90
+    println(a)
+
+}
+val只有get，没有set
+val a = 5
+    get(){
+        println("dwad")
+        return field
+    }
+fun main() {
+    println(a)
+
+}
+----------------------------------------------------------------------------
